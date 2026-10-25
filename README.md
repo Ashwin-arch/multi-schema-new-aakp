@@ -9,6 +9,23 @@ A conference-grade research prototype and empirical benchmark demonstrating how 
 
 ---
 
+### 👥 Project Team Members
+- **Ashwin Kumar G rao**
+- **Aritra das**
+- **Krishna Teja**
+- **Priyanshu Goyal**
+
+---
+
+### 🖥️ Project Presentation: *Adaptive Multi-Schema Data Warehouse*
+A 15-slide presentation with verified visual layouts and figures is included in both PowerPoint (`.pptx`) and `.pdf` formats:
+- 📊 **PowerPoint Presentation**: [`Adaptive_Multi_Schema_Data_Warehouse.pptx`](Adaptive_Multi_Schema_Data_Warehouse.pptx)
+- 📄 **PDF Version**: [`results/presentation/Adaptive_Multi_Schema_Data_Warehouse.pdf`](results/presentation/Adaptive_Multi_Schema_Data_Warehouse.pdf)
+- 🖼️ **Visual Slide Previews**: High-resolution PNGs for all 15 slides are available in [`results/presentation/slides/`](results/presentation/slides/)
+- ⚙️ **Regenerate Presentation**: Run `python generate_pptx.py` to rebuild the presentation at any time.
+
+---
+
 ## 📌 Table of Contents
 
 - [V9 Breakthrough: Multi-Representation Warehouse](#-v9-breakthrough-multi-representation-warehouse)
@@ -225,36 +242,39 @@ Open your browser to `http://localhost:8501`.
 
 ## 🚀 How to Run the Project
 
-### Quick Start (End-to-End Walkthrough)
+### Quick Start: V9 Multi-Representation Pipeline (Recommended)
 
 To execute a complete pipeline run at the **100K scale** (~1–2 minutes):
 
 ```bash
 # 1. Generate synthetic warehouse datasets
-python src/data/generate_data_v8.py --rows 100000
+python src/data/generate_data_v9.py --rows 100000
 
-# 2. Construct the Star, Snowflake, and Fact Constellation DuckDB databases
-python src/schemas/build_schemas_v7.py --rows 100000
+# 2. Materialize all 4 physical layout databases in DuckDB
+python src/schemas/build_schemas_v9.py --rows 100000
 
-# 3. Generate and validate the schema-sensitive workload (223 queries)
-python src/workload/generate_workload_v8b.py
-python src/workload/validate_workload_v8.py --workload data/processed/workload_v8b.json --rows 100000
+# 3. Generate and validate the 240-query benchmark workload
+python src/workload/generate_workload_v9.py
+python src/workload/validate_workload_v9.py --rows 100000
 
-# 4. Extract 113 pre-execution plan and structural features
-python src/workload/feature_extractor_v8b.py --rows 100000 --workload data/processed/workload_v8b.json
+# 4. Extract leakage-safe pre-execution syntactic & plan features
+python src/workload/feature_extractor_v9.py --rows 100000
 
-# 5. Execute benchmark across all three schemas (with warmup)
-python src/benchmark/run_benchmark_v8.py --rows 100000 --workload data/processed/workload_v8b.json --repeats 3 --warmup 1
+# 5. Run balanced multi-representation benchmark (2,880 executions)
+python src/benchmark/run_benchmark_v9.py --rows 100000 --repeats 3 --warmup 1
 
-# 6. Train adaptive ML controller using Leave-One-Workload-Out CV
-python src/optimizer/train_adaptive_model_v8b.py --rows 100000
+# 6. Train & evaluate the learned multi-layout router
+python src/optimizer/train_adaptive_model_v9.py --rows 100000 --cv stratified
+
+# 7. Generate publication figures (PDF & PNG)
+python src/analysis/generate_publication_figures_v9.py --rows 100000
 ```
 
 ---
 
-### Step-by-Step Execution Pipeline (V8)
+### Legacy Pipeline Walkthrough (V8 Baseline)
 
-The V8 experiment is the primary, performance-aware benchmark using 223 schema-sensitive queries and configurable dimension cardinalities.
+The V8 experiment was the prior, purely logical schema benchmark evaluating Star vs. Snowflake vs. Fact Constellation (see findings section for why physical specialization in V9 was necessary):
 
 #### Step 1: Pre-Execution Resource Check
 Verify that available system RAM and disk capacity are sufficient for the desired dataset scale:
