@@ -196,8 +196,8 @@ All three schemas are physically materialized as distinct DuckDB databases:
 
 ```bash
 # Clone the repository
-git clone https://github.com/Ashwin-arch/Multi-schema.git
-cd Multi-schema
+git clone https://github.com/Ashwin-arch/multi-schema-new-aakp.git
+cd multi-schema-new-aakp
 
 # Create and activate virtual environment
 python3 -m venv .venv
@@ -207,6 +207,19 @@ source .venv/bin/activate    # On Windows: .venv\Scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
 ```
+
+### 3. Immediate Quick Launch: Streamlit Web UI
+
+Once dependencies are installed, you can launch the interactive dashboard in two commands:
+
+```bash
+# Build the 100K physical databases (takes ~2 seconds)
+python src/schemas/build_schemas_v9.py --rows 100000
+
+# Launch the Streamlit web dashboard
+streamlit run app.py
+```
+Open your browser to `http://localhost:8501`.
 
 ---
 
