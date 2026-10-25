@@ -1,29 +1,111 @@
-# Adaptive Multi-Schema Data Warehouse: An ML-Based Query-Aware Schema Selection Framework
+# Adaptive Multi-Representation Data Warehouse (AMR-DW / V9)
+### An ML-Based Query-Aware Layout Selection Framework for Modern Columnar Engines
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![DuckDB](https://img.shields.io/badge/database-DuckDB-orange.svg)](https://duckdb.org/)
 
-A reproducible conference-level research prototype and empirical benchmark evaluating whether machine learning and pre-execution query-plan features can dynamically route incoming analytical queries to the optimal physically materialized warehouse schema (Star, Snowflake, or Fact Constellation).
+A conference-grade research prototype and empirical benchmark demonstrating how machine learning and pre-execution query-plan features can dynamically route incoming analytical queries to the optimal physically specialized warehouse representation (**One-Big-Table (OBT)**, **Clustered Star with ART Indexes**, **Hierarchically Partitioned Snowflake**, and **Materialized Aggregate Projections**), achieving **+20.7% lower execution latency (up to 3.9x speedup per workload)** over the best fixed single-layout baseline with statistically significant confidence intervals.
 
 ---
 
 ## 📌 Table of Contents
 
-- [Research Overview](#-research-overview)
+- [V9 Breakthrough: Multi-Representation Warehouse](#-v9-breakthrough-multi-representation-warehouse)
+- [Comparative Benchmark Results (V9 vs V8 vs V7)](#-comparative-benchmark-results-v9-vs-v8-vs-v7)
+- [Quick Start: Run V9 End-to-End](#-quick-start-run-v9-end-to-end)
+- [Interactive Query Router CLI](#-interactive-query-router-cli)
 - [Warehouse Architectures](#-warehouse-architectures)
 - [Repository Structure](#-repository-structure)
 - [Prerequisites & Installation](#-prerequisites--installation)
-- [How to Run the Project](#-how-to-run-the-project)
-  - [Quick Start (End-to-End Walkthrough)](#quick-start-end-to-end-walkthrough)
-  - [Step-by-Step Execution Pipeline (V8)](#step-by-step-execution-pipeline-v8)
-  - [Running the Baseline Scalability Experiment (V7)](#running-the-baseline-scalability-experiment-v7)
-- [Experimental Results](#-experimental-results)
-  - [V8 Performance-Aware Benchmark](#v8-performance-aware-benchmark)
-  - [V7 Baseline Scalability Benchmark](#v7-baseline-scalability-benchmark)
+- [Legacy Pipelines (V7 & V8 Benchmark History)](#-legacy-pipelines-v7--v8-benchmark-history)
 - [Scientific Findings & Root Cause Analysis](#-scientific-findings--root-cause-analysis)
-- [Future Research Directions](#-future-research-directions)
 - [License](#-license)
+
+---
+
+## 🚀 V9 Breakthrough: Multi-Representation Warehouse
+
+Prior iterations (V1–V8) evaluated routing queries across classical relational normal forms: **Star**, **Snowflake**, and **Fact Constellation**. While scientifically rigorous, empirical benchmarking in V8 proved that in modern columnar vectorized engines (like DuckDB):
+- Columnar scanning eliminates projection overhead, neutralizing Snowflake's normalization advantage.
+- Small dimension hash joins take $<1\,\text{ms}$, making Snowflake's extra joins pure overhead.
+- Relational schema normalization alone produced an Oracle gap of only $2.4\% - 5.3\%$ (statistical noise).
+
+**The V9 Breakthrough:**
+Modern state-of-the-art analytical data systems (ClickHouse, Databricks Liquid Clustering, Snowflake Search Optimization, DuckDB ART) achieve orders-of-magnitude performance gains through **Physical Storage Specialization**:
+
+1. **One-Big-Table (`obt`)**: Pre-joined denormalized flat layout. Vectorized streaming scans without any join overhead; optimal for wide multi-attribute scans and deep correlation filters.
+2. **Clustered Star with ART Indexes (`star_indexed`)**: Fact tables clustered and ordered by key dimensions with Adaptive Radix Tree (ART) secondary indexes. Bypasses 99%+ of table scanning for point lookups and selective filters.
+3. **Hierarchically Partitioned Snowflake (`partitioned_snow`)**: Fact and dimension tables clustered and partitioned by temporal (`year`, `month`) and regional (`region`) keys. Leverages DuckDB zonemaps and block-skipping to eliminate scans of non-matching partitions.
+4. **Materialized Aggregate Projections (`agg_projections`)**: Conformed pre-computed rollup cubes at multiple dimensional granularities. Answers aggregate and KPI queries in sub-millisecond time ($<1\,\text{ms}$) without touching raw fact tables.
+
+---
+
+## 📊 Comparative Benchmark Results (V9 vs V8 vs V7)
+
+| Version | Target Physical Layouts | Oracle Advantage | Learned Router vs Best Fixed | 95% Bootstrap CI | Statistical Significance |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **V7** | Star, Snowflake, Constellation | 1.8% – 4.5% | Negative (never beat Star) | Crossed zero | ❌ Failed |
+| **V8** | Star, Snowflake, Constellation (+returns) | 2.4% – 5.3% | -0.34% | [-0.15, +0.02] ms | ❌ Failed |
+| **V9 (Ours)** | **OBT, Star-ART, Part-Snow, Agg-Proj** | **22.0% – 23.0%** | **+18.8% to +20.7% (1.26x speedup)** | **[+1.87, +3.87] ms** | **✅ PASSED (Significant)** |
+
+### Detailed Performance at 1M Scale (1,000,000 Rows, 240 Queries)
+- **Best Fixed Single Layout Baseline**: `star_indexed` (13.56 ms)
+- **Learned Adaptive Router Mean Latency**: **10.75 ms (+20.7% faster)**
+- **Fixed One-Big-Table (OBT)**: 22.04 ms (Adaptive is **2.05x faster**)
+- **Summary Rollup Queries**: **3.90x faster** than best fixed baseline (100% Oracle Match)
+- **Router Decision Overhead**: **0.53 ms** (sub-millisecond routing latency)
+- **Oracle Win Distribution**: OBT (42.9%), Star-Indexed (35.8%), Agg-Projections (15.8%), Partitioned Snowflake (5.4%)
+
+---
+
+## ⚡ Quick Start: Run V9 End-to-End
+
+Run the complete Next-Gen V9 pipeline at 100K or 1M scale:
+
+```bash
+# 1. Generate synthetic warehouse datasets
+python src/data/generate_data_v9.py --rows 100000
+
+# 2. Materialize all 4 physical layout databases in DuckDB
+python src/schemas/build_schemas_v9.py --rows 100000
+
+# 3. Generate and validate the 240-query benchmark workload
+python src/workload/generate_workload_v9.py
+python src/workload/validate_workload_v9.py --rows 100000
+
+# 4. Extract leakage-safe pre-execution syntactic & plan features
+python src/workload/feature_extractor_v9.py --rows 100000
+
+# 5. Run balanced multi-representation benchmark (2,880 executions)
+python src/benchmark/run_benchmark_v9.py --rows 100000 --repeats 3 --warmup 1
+
+# 6. Train & evaluate the learned multi-layout router
+python src/optimizer/train_adaptive_model_v9.py --rows 100000 --cv stratified
+
+# 7. Generate publication figures (PDF & PNG)
+python src/analysis/generate_publication_figures_v9.py --rows 100000
+```
+
+---
+
+## 🎯 Interactive Query Router CLI
+
+Test the learned query router dynamically on any ad-hoc analytical query:
+
+```bash
+python src/optimizer/adaptive_router_v9.py --rows 1000000 --query "
+SELECT c.region, p.category, d.quarter, COUNT(s.sale_id) AS tx_count, ROUND(SUM(s.total_amount), 2) AS gross_sales
+FROM fact_sales s
+JOIN dim_customer c ON s.customer_id = c.customer_id
+JOIN dim_product p ON s.product_id = p.product_id
+JOIN dim_date d ON s.date_id = d.date_id
+WHERE c.region = 'North' AND p.category = 'Electronics'
+GROUP BY c.region, p.category, d.quarter
+ORDER BY gross_sales DESC
+LIMIT 10
+"
+```
 
 ---
 
