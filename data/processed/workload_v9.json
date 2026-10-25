@@ -1,0 +1,1682 @@
+[
+  {
+    "query_id": "Q_PL_001",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 122\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=122"
+  },
+  {
+    "query_id": "Q_PL_002",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 21\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=21"
+  },
+  {
+    "query_id": "Q_PL_003",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 515 AND s.date_id = 263",
+    "description": "Exact customer (515) and date (263) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_004",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 663\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=663"
+  },
+  {
+    "query_id": "Q_PL_005",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 56 AND s.customer_id = 976",
+    "description": "Cross-entity pair lookup (cust=976, prod=56)"
+  },
+  {
+    "query_id": "Q_PL_006",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 106\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=106"
+  },
+  {
+    "query_id": "Q_PL_007",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 57\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=57"
+  },
+  {
+    "query_id": "Q_PL_008",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 229 AND s.date_id = 308",
+    "description": "Exact customer (229) and date (308) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_009",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 637\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=637"
+  },
+  {
+    "query_id": "Q_PL_010",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 36 AND s.customer_id = 431",
+    "description": "Cross-entity pair lookup (cust=431, prod=36)"
+  },
+  {
+    "query_id": "Q_PL_011",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 803\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=803"
+  },
+  {
+    "query_id": "Q_PL_012",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 37\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=37"
+  },
+  {
+    "query_id": "Q_PL_013",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 561 AND s.date_id = 252",
+    "description": "Exact customer (561) and date (252) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_014",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 770\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=770"
+  },
+  {
+    "query_id": "Q_PL_015",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 50 AND s.customer_id = 601",
+    "description": "Cross-entity pair lookup (cust=601, prod=50)"
+  },
+  {
+    "query_id": "Q_PL_016",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 452\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=452"
+  },
+  {
+    "query_id": "Q_PL_017",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 16\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=16"
+  },
+  {
+    "query_id": "Q_PL_018",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 3 AND s.date_id = 315",
+    "description": "Exact customer (3) and date (315) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_019",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 83\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=83"
+  },
+  {
+    "query_id": "Q_PL_020",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 8 AND s.customer_id = 295",
+    "description": "Cross-entity pair lookup (cust=295, prod=8)"
+  },
+  {
+    "query_id": "Q_PL_021",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 837\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=837"
+  },
+  {
+    "query_id": "Q_PL_022",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 7\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=7"
+  },
+  {
+    "query_id": "Q_PL_023",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 461 AND s.date_id = 6",
+    "description": "Exact customer (461) and date (6) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_024",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 835\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=835"
+  },
+  {
+    "query_id": "Q_PL_025",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 58 AND s.customer_id = 702",
+    "description": "Cross-entity pair lookup (cust=702, prod=58)"
+  },
+  {
+    "query_id": "Q_PL_026",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 503\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=503"
+  },
+  {
+    "query_id": "Q_PL_027",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 44\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=44"
+  },
+  {
+    "query_id": "Q_PL_028",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 322 AND s.date_id = 108",
+    "description": "Exact customer (322) and date (108) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_029",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 407\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=407"
+  },
+  {
+    "query_id": "Q_PL_030",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 17 AND s.customer_id = 357",
+    "description": "Cross-entity pair lookup (cust=357, prod=17)"
+  },
+  {
+    "query_id": "Q_PL_031",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 952\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=952"
+  },
+  {
+    "query_id": "Q_PL_032",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 23\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=23"
+  },
+  {
+    "query_id": "Q_PL_033",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 825 AND s.date_id = 193",
+    "description": "Exact customer (825) and date (193) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_034",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 764\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=764"
+  },
+  {
+    "query_id": "Q_PL_035",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 33 AND s.customer_id = 654",
+    "description": "Cross-entity pair lookup (cust=654, prod=33)"
+  },
+  {
+    "query_id": "Q_PL_036",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.discount, s.total_amount, c.customer_name, c.region\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nWHERE s.customer_id = 79\nORDER BY s.date_id",
+    "description": "Single-customer transaction history for customer_id=79"
+  },
+  {
+    "query_id": "Q_PL_037",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.date_id, s.quantity, s.total_amount, p.product_name, p.category\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 47\nORDER BY s.total_amount DESC\nLIMIT 20",
+    "description": "Top-20 transactions for product_id=47"
+  },
+  {
+    "query_id": "Q_PL_038",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.discount, s.total_amount, c.customer_name, p.product_name\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.customer_id = 349 AND s.date_id = 46",
+    "description": "Exact customer (349) and date (46) transaction lookup"
+  },
+  {
+    "query_id": "Q_PL_039",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT r.return_id, r.date_id, r.returned_quantity, r.refund_amount, c.customer_name, p.product_name\nFROM fact_returns r\nJOIN dim_customer c ON r.customer_id = c.customer_id\nJOIN dim_product p ON r.product_id = p.product_id\nWHERE r.customer_id = 571\nORDER BY r.date_id",
+    "description": "Return audit lookup for customer_id=571"
+  },
+  {
+    "query_id": "Q_PL_040",
+    "workload": "point_lookup",
+    "target_layout": "star_indexed",
+    "sql": "SELECT s.sale_id, s.quantity, s.total_amount, c.region, p.category\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nWHERE s.product_id = 35 AND s.customer_id = 300",
+    "description": "Cross-entity pair lookup (cust=300, prod=35)"
+  },
+  {
+    "query_id": "Q_WM_001",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Corporate')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.14\n  AND p.unit_price >= 1941\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in East/Corporate"
+  },
+  {
+    "query_id": "Q_WM_002",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Consumer')\n  AND p.category = 'Office'\n  AND s.discount >= 0.09\n  AND p.unit_price >= 1444\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in East/Consumer"
+  },
+  {
+    "query_id": "Q_WM_003",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Consumer')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.14\n  AND p.unit_price >= 1635\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in West/Consumer"
+  },
+  {
+    "query_id": "Q_WM_004",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Consumer')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.1\n  AND p.unit_price >= 2036\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in West/Consumer"
+  },
+  {
+    "query_id": "Q_WM_005",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Corporate')\n  AND p.category = 'Office'\n  AND s.discount >= 0.08\n  AND p.unit_price >= 1360\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Corporate"
+  },
+  {
+    "query_id": "Q_WM_006",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.13\n  AND p.unit_price >= 1678\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Home Office"
+  },
+  {
+    "query_id": "Q_WM_007",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Consumer')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.15\n  AND p.unit_price >= 1571\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in South/Consumer"
+  },
+  {
+    "query_id": "Q_WM_008",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.09\n  AND p.unit_price >= 791\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in North/Home Office"
+  },
+  {
+    "query_id": "Q_WM_009",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Consumer')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.11\n  AND p.unit_price >= 1435\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in West/Consumer"
+  },
+  {
+    "query_id": "Q_WM_010",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.08\n  AND p.unit_price >= 1323\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Home Office"
+  },
+  {
+    "query_id": "Q_WM_011",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.1\n  AND p.unit_price >= 1480\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in East/Home Office"
+  },
+  {
+    "query_id": "Q_WM_012",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Corporate')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.08\n  AND p.unit_price >= 1050\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in West/Corporate"
+  },
+  {
+    "query_id": "Q_WM_013",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Consumer')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.12\n  AND p.unit_price >= 1723\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in North/Consumer"
+  },
+  {
+    "query_id": "Q_WM_014",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Home Office')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.09\n  AND p.unit_price >= 909\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in West/Home Office"
+  },
+  {
+    "query_id": "Q_WM_015",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Home Office')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.1\n  AND p.unit_price >= 2070\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in East/Home Office"
+  },
+  {
+    "query_id": "Q_WM_016",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Corporate')\n  AND p.category = 'Office'\n  AND s.discount >= 0.12\n  AND p.unit_price >= 568\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Corporate"
+  },
+  {
+    "query_id": "Q_WM_017",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Corporate')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.14\n  AND p.unit_price >= 701\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in East/Corporate"
+  },
+  {
+    "query_id": "Q_WM_018",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.13\n  AND p.unit_price >= 1555\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Home Office"
+  },
+  {
+    "query_id": "Q_WM_019",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Corporate')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.15\n  AND p.unit_price >= 2225\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in East/Corporate"
+  },
+  {
+    "query_id": "Q_WM_020",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Consumer')\n  AND p.category = 'Office'\n  AND s.discount >= 0.08\n  AND p.unit_price >= 1520\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Consumer"
+  },
+  {
+    "query_id": "Q_WM_021",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Consumer')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.12\n  AND p.unit_price >= 1342\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in East/Consumer"
+  },
+  {
+    "query_id": "Q_WM_022",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Corporate')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.06\n  AND p.unit_price >= 1424\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in South/Corporate"
+  },
+  {
+    "query_id": "Q_WM_023",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Home Office')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.07\n  AND p.unit_price >= 1771\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in North/Home Office"
+  },
+  {
+    "query_id": "Q_WM_024",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Home Office')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.12\n  AND p.unit_price >= 1801\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in North/Home Office"
+  },
+  {
+    "query_id": "Q_WM_025",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Consumer')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.08\n  AND p.unit_price >= 1694\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in East/Consumer"
+  },
+  {
+    "query_id": "Q_WM_026",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.14\n  AND p.unit_price >= 1617\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Home Office"
+  },
+  {
+    "query_id": "Q_WM_027",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Corporate')\n  AND p.category = 'Office'\n  AND s.discount >= 0.06\n  AND p.unit_price >= 1724\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in South/Corporate"
+  },
+  {
+    "query_id": "Q_WM_028",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Consumer')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.12\n  AND p.unit_price >= 2414\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in East/Consumer"
+  },
+  {
+    "query_id": "Q_WM_029",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Home Office')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.1\n  AND p.unit_price >= 1299\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in South/Home Office"
+  },
+  {
+    "query_id": "Q_WM_030",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Home Office')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.09\n  AND p.unit_price >= 2463\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in South/Home Office"
+  },
+  {
+    "query_id": "Q_WM_031",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Corporate')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.06\n  AND p.unit_price >= 1210\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in North/Corporate"
+  },
+  {
+    "query_id": "Q_WM_032",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Consumer')\n  AND p.category = 'Electronics'\n  AND s.discount >= 0.1\n  AND p.unit_price >= 1171\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Electronics in East/Consumer"
+  },
+  {
+    "query_id": "Q_WM_033",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'East' OR c.segment = 'Corporate')\n  AND p.category = 'Furniture'\n  AND s.discount >= 0.14\n  AND p.unit_price >= 1519\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Furniture in East/Corporate"
+  },
+  {
+    "query_id": "Q_WM_034",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'West' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.13\n  AND p.unit_price >= 815\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in West/Home Office"
+  },
+  {
+    "query_id": "Q_WM_035",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Corporate')\n  AND p.category = 'Office'\n  AND s.discount >= 0.08\n  AND p.unit_price >= 1725\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in South/Corporate"
+  },
+  {
+    "query_id": "Q_WM_036",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Home Office')\n  AND p.category = 'Office'\n  AND s.discount >= 0.06\n  AND p.unit_price >= 1317\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in South/Home Office"
+  },
+  {
+    "query_id": "Q_WM_037",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Consumer')\n  AND p.category = 'Office'\n  AND s.discount >= 0.14\n  AND p.unit_price >= 592\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in North/Consumer"
+  },
+  {
+    "query_id": "Q_WM_038",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Corporate')\n  AND p.category = 'Office'\n  AND s.discount >= 0.07\n  AND p.unit_price >= 1956\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in North/Corporate"
+  },
+  {
+    "query_id": "Q_WM_039",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'North' OR c.segment = 'Consumer')\n  AND p.category = 'Office'\n  AND s.discount >= 0.1\n  AND p.unit_price >= 2108\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in North/Consumer"
+  },
+  {
+    "query_id": "Q_WM_040",
+    "workload": "wide_multidim",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.region,\n    c.segment,\n    p.category,\n    d.quarter,\n    COUNT(s.sale_id) AS tx_count,\n    ROUND(SUM(s.total_amount), 2) AS gross_sales,\n    ROUND(AVG(s.discount), 4) AS mean_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE (c.region = 'South' OR c.segment = 'Consumer')\n  AND p.category = 'Office'\n  AND s.discount >= 0.13\n  AND p.unit_price >= 1298\nGROUP BY c.region, c.segment, p.category, d.quarter\nORDER BY gross_sales DESC",
+    "description": "Wide multi-dimensional correlation for Office in South/Consumer"
+  },
+  {
+    "query_id": "Q_PP_001",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 7\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 7, Region East"
+  },
+  {
+    "query_id": "Q_PP_002",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 7\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 7, Region North"
+  },
+  {
+    "query_id": "Q_PP_003",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 6\n  AND c.region = 'South'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 6, Region South"
+  },
+  {
+    "query_id": "Q_PP_004",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 8\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 8, Region East"
+  },
+  {
+    "query_id": "Q_PP_005",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 5\n  AND c.region = 'West'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 5, Region West"
+  },
+  {
+    "query_id": "Q_PP_006",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 6\n  AND c.region = 'South'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 6, Region South"
+  },
+  {
+    "query_id": "Q_PP_007",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 2\n  AND c.region = 'West'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 2, Region West"
+  },
+  {
+    "query_id": "Q_PP_008",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 4\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 4, Region North"
+  },
+  {
+    "query_id": "Q_PP_009",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 2\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 2, Region North"
+  },
+  {
+    "query_id": "Q_PP_010",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 7\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 7, Region East"
+  },
+  {
+    "query_id": "Q_PP_011",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 6\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 6, Region North"
+  },
+  {
+    "query_id": "Q_PP_012",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 9\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 9, Region East"
+  },
+  {
+    "query_id": "Q_PP_013",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 10\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 10, Region North"
+  },
+  {
+    "query_id": "Q_PP_014",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 10\n  AND c.region = 'South'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 10, Region South"
+  },
+  {
+    "query_id": "Q_PP_015",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 11\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 11, Region East"
+  },
+  {
+    "query_id": "Q_PP_016",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 5\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 5, Region North"
+  },
+  {
+    "query_id": "Q_PP_017",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 3\n  AND c.region = 'West'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 3, Region West"
+  },
+  {
+    "query_id": "Q_PP_018",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 6\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 6, Region North"
+  },
+  {
+    "query_id": "Q_PP_019",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 9\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 9, Region North"
+  },
+  {
+    "query_id": "Q_PP_020",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 10\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 10, Region East"
+  },
+  {
+    "query_id": "Q_PP_021",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 6\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 6, Region East"
+  },
+  {
+    "query_id": "Q_PP_022",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 5\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 5, Region East"
+  },
+  {
+    "query_id": "Q_PP_023",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 7\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 7, Region North"
+  },
+  {
+    "query_id": "Q_PP_024",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 1\n  AND c.region = 'West'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 1, Region West"
+  },
+  {
+    "query_id": "Q_PP_025",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 4\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 4, Region North"
+  },
+  {
+    "query_id": "Q_PP_026",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 2\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 2, Region East"
+  },
+  {
+    "query_id": "Q_PP_027",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 6\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 6, Region East"
+  },
+  {
+    "query_id": "Q_PP_028",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 7\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 7, Region North"
+  },
+  {
+    "query_id": "Q_PP_029",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 10\n  AND c.region = 'South'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 10, Region South"
+  },
+  {
+    "query_id": "Q_PP_030",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 11\n  AND c.region = 'West'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 11, Region West"
+  },
+  {
+    "query_id": "Q_PP_031",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 9\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 9, Region East"
+  },
+  {
+    "query_id": "Q_PP_032",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 5\n  AND c.region = 'West'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 5, Region West"
+  },
+  {
+    "query_id": "Q_PP_033",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 12\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 12, Region North"
+  },
+  {
+    "query_id": "Q_PP_034",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 5\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 5, Region North"
+  },
+  {
+    "query_id": "Q_PP_035",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 12\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 12, Region East"
+  },
+  {
+    "query_id": "Q_PP_036",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 7\n  AND c.region = 'East'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 7, Region East"
+  },
+  {
+    "query_id": "Q_PP_037",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 9\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 9, Region North"
+  },
+  {
+    "query_id": "Q_PP_038",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 9\n  AND c.region = 'South'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 9, Region South"
+  },
+  {
+    "query_id": "Q_PP_039",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 3\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 3, Region North"
+  },
+  {
+    "query_id": "Q_PP_040",
+    "workload": "partition_pruned",
+    "target_layout": "partitioned_snow",
+    "sql": "SELECT\n    c.customer_name,\n    p.product_name,\n    p.category,\n    s.quantity,\n    s.total_amount,\n    d.full_date\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE d.year = 2025\n  AND d.month = 1\n  AND c.region = 'North'\nORDER BY s.total_amount DESC\nLIMIT 50",
+    "description": "Partition-pruned slice: Year 2025, Month 1, Region North"
+  },
+  {
+    "query_id": "Q_SR_001",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'East'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region East"
+  },
+  {
+    "query_id": "Q_SR_002",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Office'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Office"
+  },
+  {
+    "query_id": "Q_SR_003",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Electronics'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for East / Electronics"
+  },
+  {
+    "query_id": "Q_SR_004",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'West'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region West"
+  },
+  {
+    "query_id": "Q_SR_005",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Office'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Office"
+  },
+  {
+    "query_id": "Q_SR_006",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Furniture'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for South / Furniture"
+  },
+  {
+    "query_id": "Q_SR_007",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'West'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region West"
+  },
+  {
+    "query_id": "Q_SR_008",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Furniture'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Furniture"
+  },
+  {
+    "query_id": "Q_SR_009",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Electronics'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for West / Electronics"
+  },
+  {
+    "query_id": "Q_SR_010",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'West'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region West"
+  },
+  {
+    "query_id": "Q_SR_011",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Office'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Office"
+  },
+  {
+    "query_id": "Q_SR_012",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Electronics'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for South / Electronics"
+  },
+  {
+    "query_id": "Q_SR_013",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'South'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region South"
+  },
+  {
+    "query_id": "Q_SR_014",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Office'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Office"
+  },
+  {
+    "query_id": "Q_SR_015",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Office'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for North / Office"
+  },
+  {
+    "query_id": "Q_SR_016",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'West'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region West"
+  },
+  {
+    "query_id": "Q_SR_017",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Furniture'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Furniture"
+  },
+  {
+    "query_id": "Q_SR_018",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Electronics'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for South / Electronics"
+  },
+  {
+    "query_id": "Q_SR_019",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'North'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region North"
+  },
+  {
+    "query_id": "Q_SR_020",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Electronics'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Electronics"
+  },
+  {
+    "query_id": "Q_SR_021",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Office'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for East / Office"
+  },
+  {
+    "query_id": "Q_SR_022",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'West'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region West"
+  },
+  {
+    "query_id": "Q_SR_023",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Furniture'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Furniture"
+  },
+  {
+    "query_id": "Q_SR_024",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for East / Furniture"
+  },
+  {
+    "query_id": "Q_SR_025",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'South'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region South"
+  },
+  {
+    "query_id": "Q_SR_026",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Office'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Office"
+  },
+  {
+    "query_id": "Q_SR_027",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Electronics'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for North / Electronics"
+  },
+  {
+    "query_id": "Q_SR_028",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'North'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region North"
+  },
+  {
+    "query_id": "Q_SR_029",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Office'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Office"
+  },
+  {
+    "query_id": "Q_SR_030",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for East / Furniture"
+  },
+  {
+    "query_id": "Q_SR_031",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'East'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region East"
+  },
+  {
+    "query_id": "Q_SR_032",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Electronics'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Electronics"
+  },
+  {
+    "query_id": "Q_SR_033",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Office'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for North / Office"
+  },
+  {
+    "query_id": "Q_SR_034",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'South'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region South"
+  },
+  {
+    "query_id": "Q_SR_035",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Furniture'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Furniture"
+  },
+  {
+    "query_id": "Q_SR_036",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Electronics'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for North / Electronics"
+  },
+  {
+    "query_id": "Q_SR_037",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'South'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region South"
+  },
+  {
+    "query_id": "Q_SR_038",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    p.category,\n    p.product_id,\n    p.product_name,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue\nFROM fact_sales s\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE p.category = 'Office'\nGROUP BY d.year, p.category, p.product_id, p.product_name\nORDER BY total_revenue DESC",
+    "description": "Product-category rollup for Category Office"
+  },
+  {
+    "query_id": "Q_SR_039",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    c.region,\n    p.category,\n    COUNT(DISTINCT s.sale_id) AS total_sales_count,\n    ROUND(SUM(s.total_amount), 2) AS total_sales_amount,\n    COUNT(DISTINCT r.return_id) AS total_returns_count,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refund_amount,\n    ROUND(SUM(s.total_amount) - COALESCE(SUM(r.refund_amount), 0), 2) AS net_revenue\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Office'\nGROUP BY d.year, c.region, p.category\nORDER BY net_revenue DESC",
+    "description": "Conformed multi-fact KPI rollup for West / Office"
+  },
+  {
+    "query_id": "Q_SR_040",
+    "workload": "summary_rollup",
+    "target_layout": "agg_projections",
+    "sql": "SELECT\n    d.year,\n    d.quarter,\n    c.region,\n    c.segment,\n    COUNT(s.sale_id) AS total_transactions,\n    SUM(s.quantity) AS total_quantity,\n    ROUND(SUM(s.total_amount), 2) AS total_revenue,\n    ROUND(AVG(s.discount), 4) AS avg_discount\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.region = 'East'\nGROUP BY d.year, d.quarter, c.region, c.segment\nORDER BY d.year, d.quarter, total_revenue DESC",
+    "description": "Temporal-regional rollup for Region East"
+  },
+  {
+    "query_id": "Q_MA_001",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Home Office' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_002",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Consumer' by order_count"
+  },
+  {
+    "query_id": "Q_MA_003",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Corporate' by order_count"
+  },
+  {
+    "query_id": "Q_MA_004",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.quantity) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Home Office' by total_units"
+  },
+  {
+    "query_id": "Q_MA_005",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Consumer' by order_count"
+  },
+  {
+    "query_id": "Q_MA_006",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.quantity) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Consumer' by total_units"
+  },
+  {
+    "query_id": "Q_MA_007",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Corporate' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_008",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.quantity) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Consumer' by total_units"
+  },
+  {
+    "query_id": "Q_MA_009",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Consumer' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_010",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by order_count"
+  },
+  {
+    "query_id": "Q_MA_011",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Consumer' by order_count"
+  },
+  {
+    "query_id": "Q_MA_012",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Consumer' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_013",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_014",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Home Office' by order_count"
+  },
+  {
+    "query_id": "Q_MA_015",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.quantity) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Corporate' by total_units"
+  },
+  {
+    "query_id": "Q_MA_016",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Home Office' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_017",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Consumer' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_018",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.quantity) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Corporate' by total_units"
+  },
+  {
+    "query_id": "Q_MA_019",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Corporate' by order_count"
+  },
+  {
+    "query_id": "Q_MA_020",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Consumer' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_021",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Home Office' by order_count"
+  },
+  {
+    "query_id": "Q_MA_022",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Consumer' by order_count"
+  },
+  {
+    "query_id": "Q_MA_023",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_024",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_025",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.quantity) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Corporate' by total_units"
+  },
+  {
+    "query_id": "Q_MA_026",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_027",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Consumer' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_028",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Consumer' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_029",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_030",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Corporate' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_031",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Corporate' by order_count"
+  },
+  {
+    "query_id": "Q_MA_032",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_033",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Consumer'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Consumer' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_034",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Corporate' by order_count"
+  },
+  {
+    "query_id": "Q_MA_035",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Corporate' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_036",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 5",
+    "description": "Top 5 products in segment 'Home Office' by order_count"
+  },
+  {
+    "query_id": "Q_MA_037",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    COUNT(s.sale_id) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Corporate' by order_count"
+  },
+  {
+    "query_id": "Q_MA_038",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Home Office' by total_revenue"
+  },
+  {
+    "query_id": "Q_MA_039",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    AVG(s.total_amount) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Corporate'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 20",
+    "description": "Top 20 products in segment 'Corporate' by avg_revenue"
+  },
+  {
+    "query_id": "Q_MA_040",
+    "workload": "mixed_analytical",
+    "target_layout": "obt",
+    "sql": "SELECT\n    p.product_name,\n    p.category,\n    c.region,\n    SUM(s.quantity) AS metric_val\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nJOIN dim_date d ON s.date_id = d.date_id\nWHERE c.segment = 'Home Office'\nGROUP BY p.product_name, p.category, c.region\nORDER BY metric_val DESC\nLIMIT 10",
+    "description": "Top 10 products in segment 'Home Office' by total_units"
+  },
+  {
+    "query_id": "Q_MC_001",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in North"
+  },
+  {
+    "query_id": "Q_MC_002",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in North"
+  },
+  {
+    "query_id": "Q_MC_003",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in East"
+  },
+  {
+    "query_id": "Q_MC_004",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in South"
+  },
+  {
+    "query_id": "Q_MC_005",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in East"
+  },
+  {
+    "query_id": "Q_MC_006",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in East"
+  },
+  {
+    "query_id": "Q_MC_007",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in West"
+  },
+  {
+    "query_id": "Q_MC_008",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in East"
+  },
+  {
+    "query_id": "Q_MC_009",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in South"
+  },
+  {
+    "query_id": "Q_MC_010",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in South"
+  },
+  {
+    "query_id": "Q_MC_011",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in East"
+  },
+  {
+    "query_id": "Q_MC_012",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in West"
+  },
+  {
+    "query_id": "Q_MC_013",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in West"
+  },
+  {
+    "query_id": "Q_MC_014",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in South"
+  },
+  {
+    "query_id": "Q_MC_015",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in South"
+  },
+  {
+    "query_id": "Q_MC_016",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in East"
+  },
+  {
+    "query_id": "Q_MC_017",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in North"
+  },
+  {
+    "query_id": "Q_MC_018",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in East"
+  },
+  {
+    "query_id": "Q_MC_019",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in East"
+  },
+  {
+    "query_id": "Q_MC_020",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in East"
+  },
+  {
+    "query_id": "Q_MC_021",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in East"
+  },
+  {
+    "query_id": "Q_MC_022",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in North"
+  },
+  {
+    "query_id": "Q_MC_023",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in East"
+  },
+  {
+    "query_id": "Q_MC_024",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in West"
+  },
+  {
+    "query_id": "Q_MC_025",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in West"
+  },
+  {
+    "query_id": "Q_MC_026",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in North"
+  },
+  {
+    "query_id": "Q_MC_027",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in East"
+  },
+  {
+    "query_id": "Q_MC_028",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in West"
+  },
+  {
+    "query_id": "Q_MC_029",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'North' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in North"
+  },
+  {
+    "query_id": "Q_MC_030",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in West"
+  },
+  {
+    "query_id": "Q_MC_031",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in South"
+  },
+  {
+    "query_id": "Q_MC_032",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in East"
+  },
+  {
+    "query_id": "Q_MC_033",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in East"
+  },
+  {
+    "query_id": "Q_MC_034",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in West"
+  },
+  {
+    "query_id": "Q_MC_035",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'South' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in South"
+  },
+  {
+    "query_id": "Q_MC_036",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in East"
+  },
+  {
+    "query_id": "Q_MC_037",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Electronics'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Electronics in East"
+  },
+  {
+    "query_id": "Q_MC_038",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'East' AND p.category = 'Office'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Office in East"
+  },
+  {
+    "query_id": "Q_MC_039",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in West"
+  },
+  {
+    "query_id": "Q_MC_040",
+    "workload": "multifact_correlation",
+    "target_layout": "obt",
+    "sql": "SELECT\n    c.customer_name,\n    p.category,\n    ROUND(SUM(s.total_amount), 2) AS total_spent,\n    ROUND(COALESCE(SUM(r.refund_amount), 0), 2) AS total_refunded,\n    ROUND(COALESCE(SUM(r.refund_amount), 0) / NULLIF(SUM(s.total_amount), 0) * 100, 2) AS return_rate_pct\nFROM fact_sales s\nJOIN dim_customer c ON s.customer_id = c.customer_id\nJOIN dim_product p ON s.product_id = p.product_id\nLEFT JOIN fact_returns r ON s.sale_id = r.return_id\nWHERE c.region = 'West' AND p.category = 'Furniture'\nGROUP BY c.customer_name, p.category\nHAVING SUM(s.total_amount) > 1000\nORDER BY return_rate_pct DESC\nLIMIT 15",
+    "description": "Customer return rate ranking for Furniture in West"
+  }
+]
