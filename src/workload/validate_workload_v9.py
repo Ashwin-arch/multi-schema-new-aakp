@@ -93,7 +93,13 @@ def adapt_sql_v9(sql, schema, workload_class=None):
         return s
 
     elif schema == "agg_projections":
-        if workload_class == "summary_rollup":
+        is_summary = (
+            workload_class == "summary_rollup"
+            or ("total_transactions" in s and "total_revenue" in s)
+            or ("p.category" in s and "product_name" in s and "total_revenue" in s)
+            or ("total_sales_amount" in s and "net_revenue" in s)
+        )
+        if is_summary:
             # 1. Temporal-Regional rollup
             if "total_transactions" in s and "c.region" in s and "total_revenue" in s:
                 m_reg = re.search(r"c\.region\s*=\s*'([^']+)'", s)

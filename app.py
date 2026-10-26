@@ -86,17 +86,20 @@ if nav_page == "⚡ Interactive Query Router":
     presets = {
         "Executive Summary Rollup (Target: Agg-Projections)": """
 SELECT
-    year,
-    quarter,
-    region,
-    segment,
-    total_transactions,
-    total_quantity,
-    total_revenue,
-    avg_discount
-FROM agg_sales_temporal_regional
-WHERE region = 'North'
-ORDER BY year, quarter, total_revenue DESC
+    d.year,
+    d.quarter,
+    c.region,
+    c.segment,
+    COUNT(s.sale_id) AS total_transactions,
+    SUM(s.quantity) AS total_quantity,
+    ROUND(SUM(s.total_amount), 2) AS total_revenue,
+    ROUND(AVG(s.discount), 4) AS avg_discount
+FROM fact_sales s
+JOIN dim_customer c ON s.customer_id = c.customer_id
+JOIN dim_date d ON s.date_id = d.date_id
+WHERE c.region = 'North'
+GROUP BY d.year, d.quarter, c.region, c.segment
+ORDER BY d.year, d.quarter, total_revenue DESC
 """.strip(),
 
         "Wide Multi-Dimensional Scan (Target: OBT Zero-Join)": """
